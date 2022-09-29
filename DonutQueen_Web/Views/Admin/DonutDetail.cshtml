@@ -1,0 +1,26 @@
+﻿@model DonutQueen_Models.Donut
+@{
+    var donut = Model;
+}
+
+<h1>@donut.Naam</h1>
+<table class="table table-striped ">
+    <tbody>
+        @foreach (var item in Model.GetType().GetProperties())
+        {   
+            <tr>
+                <td>
+                   @item.Name
+                </td>
+                <td>
+                    @item.GetValue(Model)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+<div class="col">
+    <a class="btn btn-outline-success"
+       href="@Url.Action("Donuts", "Admin")">Return</a>
+</div>

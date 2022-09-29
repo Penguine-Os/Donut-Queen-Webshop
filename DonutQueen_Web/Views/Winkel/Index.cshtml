@@ -1,5 +1,42 @@
-﻿@{
+﻿@model DonutQueen_Models.ViewModels.WinkelViewModel
+@{
     ViewData["Title"] = "Winkels";
 }
+
 <h1>@ViewData["Title"]</h1>
 
+<form asp-controller="Winkel" asp-action="Search" method="get"
+    class="row g-3 align-items-center">
+    <div class="col-auto">
+        <input type="text" asp-for="SearchQuery" class="form-control" placeholder="Zoek een winkel">
+    </div>
+    <div class="col-auto">
+        <input class="btn btn-outline-primary" value="Zoeken" type="submit"/>
+        <a class="btn btn-outline-success" asp-controller="Winkel" asp-action="Index">Volledige lijst</a>
+
+    </div>
+</form>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model.Winkels)
+        {
+            <div class="col-md-4 my-3 d-flex justify-content-center">
+                <div class="card ">
+                    <img src="@Model.Url" class="card-img-top " alt="...">
+                    <div class="card-body customBg">
+                        <h3>@item.Naam</h3>
+
+                        <p class="card-text">@item.Straat<p>
+                        <p class="card-text">@item.Postcode @item.Gemeente<p>
+                    </div>
+
+                    <div class="card-footer customBg">
+                        <a href="#" class="btn btn-outline-light">Bezoek</a>
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

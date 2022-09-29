@@ -1,5 +1,41 @@
-﻿@{
+﻿@model DonutQueen_Models.ViewModels.DonutViewModel
+@{
     ViewData["Title"] = "Donuts";
 }
 <h1>@ViewData["Title"]</h1>
+
+<table class="table table-hover">
+    <thead>
+        <tr class="d-flex">
+            <th class="col-1 " scope="col">#</th>
+            <th class="col-2 " scope="col">Naam</th>
+            <th class="col-6 " scope="col">Omschrijving</th>
+            <th class="col-3 container d-flex justify-content-center" scope="col">
+                <a asp-controller="Admin" asp-action="CreateDonut"
+                   class="w-100 mx-2 btn btn-outline-success">Add</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 1; i <= Model.Donuts.Count(); i++)
+        {
+            var item = Model.Donuts.ToArray()[i - 1];
+
+            <tr class="d-flex" onclick="location.href = '@Url.Action("DonutDetail", "Admin", new { Id = item.Id})'" style="cursor: pointer">
+
+                <th class="col-1" scope="row">@i</th>
+                <td class="col-2">@Html.DisplayFor(m => item.Naam)</td>
+                <td class="col-6">@Html.DisplayFor(m => item.Omschrijving)</td>
+                <td class="col-3">
+                   
+                    <div class="container d-flex justify-content-center">
+                        <a class="w-100 me-2 btn btn-outline-warning">Update</a>
+                        <a class="w-100 ms-2 btn btn-outline-danger">Deletee</a>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 

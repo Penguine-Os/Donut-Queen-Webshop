@@ -1,5 +1,32 @@
-﻿@{
+﻿@model IEnumerable<DonutQueen_Models.Donut>
+@{
     ViewData["Title"] = "Shop";
 }
 <h1>@ViewData["Title"]</h1>
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 my-3 d-flex justify-content-center">
+                <div class="card " >
+                    <img src="~/assets/images/@item.Afbeelding" class="card-img-top"  alt="...">
+                    <div class="card-body customBg">
+
+                        <p class="card-text ">
+                            @item.Omschrijving
+                            <p>
+                    </div>
+
+                    <div class="card-footer customBg">
+                        <a class="btn btn-outline-light" href="@Url.Action("Detail", "Shop", new { Id = item.Id})">Details</a>
+                       
+                    </div>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
 

@@ -1,0 +1,11 @@
+﻿img.homeIcon {
+    width: 5rem;
+}
+
+.nav-item {
+    margin-left: 1rem;
+    margin-right:1rem;
+}
+.customBg {
+    background-color: hotpink;
+}

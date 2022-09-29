@@ -1,0 +1,50 @@
+﻿@model DonutQueen_Models.Donut
+
+<div class="container-fluid">
+  <div class="row">
+        <div class=" col-6">
+            <img class="w-50" src="~/assets/images/@Model.Afbeelding" />
+        </div>
+        <div class="col-md-4 ">
+            <div class="">
+                <h1 style="color: hotpink">@Model.Naam</h1>
+                <p>@Model.Omschrijving</p>
+                <h3 style="color: hotpink">
+                    Voor slechts @Model.Prijs!</h3>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header text-primary">
+                    Featured
+                </div>
+                <div class="m-2">
+                    <table class="table table-bordered m-0 table-sm">
+                        <tr>
+                            <td>@nameof(Model.Topping)</td>
+                            <td>@Model.Topping</td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(Model.Glazuur)</td>
+                            <td>@Model.Glazuur</td>
+                        </tr>
+                        <tr>
+                            <td>@nameof(Model.Vulling)</td>
+                            <td>@Model.Vulling</td>
+                        </tr>
+                    </table>
+
+                </div>
+                <div class="card-header text-primary">
+                    Featured
+                </div>
+                <div class="m-2">
+                    <table class="table table-bordered  table-sm">
+                        <tr>
+                            <td>@nameof(Model.IsVegan)</td>
+                            <td>@(Model.IsVegan ? "Ja" : "Nee")</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+</div>
