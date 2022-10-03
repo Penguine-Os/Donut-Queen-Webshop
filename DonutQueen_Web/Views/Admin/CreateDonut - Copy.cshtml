@@ -1,0 +1,55 @@
+﻿@model Donut
+
+<form asp-for method="post" class="d-flex justify-content-center">
+
+
+    <div class="row g-3 ">
+
+        <div class="form-group pt-5">
+            <span asp-validation-for="Naam" class="text-danger"></span>
+            <input asp-for="Naam"
+                   type="text" class="form-control mb-5" placeholder="Naam" aria-label="First name">
+
+            <span asp-validation-for="Omschrijving" class="text-danger"></span>
+            <textarea asp-for="Omschrijving"
+                      class="form-control " placeholder="Omschrijving" rows="3"></textarea>
+            
+        </div>
+        <div class="col-6">
+            <span asp-validation-for="Afbeelding" class="text-danger"></span>
+            <input asp-for="Afbeelding"
+                   type="text" class="form-control mb-5" placeholder="Afbeelding" aria-label="First name">
+
+            <span asp-validation-for="Glazuur" class="text-danger"></span>
+            <input asp-for="Glazuur"
+                   type="text" class="form-control mb-5" placeholder="Glazuur" aria-label="First name">
+           
+
+            <input asp-for="IsVegan"
+                   type="text" class="form-control mb-5" placeholder="Vegan" aria-label="First name">
+            <button type="submit" class=" w-100 btn btn-outline-primary">Create</button>
+
+        </div>
+
+
+        <div class="col-6">
+            <span asp-validation-for="Topping" class="text-danger"></span>
+            <input asp-for="Topping"
+                   type="text" class="form-control mb-5" placeholder="Topping" aria-label="Last name">
+
+            <span asp-validation-for="Vulling" class="text-danger"></span>
+            <input asp-for="Vulling"
+                   type="text" class="form-control mb-5" placeholder="Vulling" aria-label="Last name">
+            <span asp-validation-for="Prijs" class="text-danger"></span>
+            <input asp-for="Prijs"
+                 type="number" class="form-control mb-5" placeholder="Prijs" aria-label="Last name">
+            <a asp-controller="Admin" asp-action="Donuts" class="w-100 btn btn-outline-success">Return</a>
+
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,4 +1,4 @@
-﻿@model DonutQueen_Models.Donut
+﻿@model Donut
 @{
     var donut = Model;
 }
@@ -10,7 +10,7 @@
         {   
             <tr>
                 <td>
-                   @item.Name
+                    @(item.Name == "IsVegan" ? "Vegan" : item.Name)
                 </td>
                 <td>
                     @item.GetValue(Model)

@@ -14,18 +14,25 @@ namespace DonutQueen_Models
         [Required]
         [MaxLength(50)]
         public string Naam { get; set; }
+
         [Required]
         public string Afbeelding { get; set; }
+
         [Required]
         public string Glazuur { get; set; }
+
         [Required]
-        [DisplayName("Vigan")]
+        [Display(Name = "Vigan")]
         public bool IsVegan { get; set; }
-        public string Omschrijving { get; set; }
+
+        public string? Omschrijving { get; set; }
+
         [Required]
         public string Topping { get; set; }
+
         [Required]
         public string Vulling { get; set; }
+
         public decimal? Prijs { get; set; }
 
 

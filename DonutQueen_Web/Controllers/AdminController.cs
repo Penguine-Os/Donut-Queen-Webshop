@@ -37,7 +37,8 @@ namespace DonutQueen_Web.Controllers
         [HttpPost]
         public IActionResult CreateDonut(DonutViewModel donutViewModel)
         {
-            
+
+            //var state = ModelState.IsValid;
             decimal prijs;
             if (!string.IsNullOrWhiteSpace(donutViewModel.Prijs))
 
@@ -51,7 +52,53 @@ namespace DonutQueen_Web.Controllers
 
 
 
-            return RedirectToAction("Donus");
+            return RedirectToAction("Donut");
+        }
+
+        [HttpPost]
+        //public IActionResult CreateDonut(Donut donut)
+        //    {
+
+        //    var state = ModelState.IsValid;
+            
+
+
+
+        //    return RedirectToAction("Donuts");
+        //}
+        public IActionResult UpdateDonut(int id)
+        {
+            
+            if (id == 0)
+                return View();
+
+
+            var donut = _unitOfWork.DonutRepo.GetById(id);
+            DonutViewModel Dvm = new DonutViewModel();
+            Dvm.Donut = donut;
+            Dvm.Prijs = donut.Prijs.ToString();
+            return View(Dvm);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateDonut(DonutViewModel donutViewModel)
+        {
+
+
+            decimal prijs;
+            if (!string.IsNullOrWhiteSpace(donutViewModel.Prijs))
+
+                if (decimal.TryParse(donutViewModel.Prijs, out prijs))
+
+                    donutViewModel.Donut.Prijs = prijs;
+
+
+
+            int id = _unitOfWork.DonutRepo.AddObjToDb(donutViewModel.Donut);
+
+
+
+            return RedirectToAction("Donuts");
         }
 
 

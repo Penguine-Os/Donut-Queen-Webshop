@@ -1,7 +1,9 @@
 using DonutQueen_DAL.Data;
 using DonutQueen_DAL.IRepositories;
 using DonutQueen_DAL.Repositories;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +26,24 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+//var defaultDateCulture = "nl-BE";
+//var ci = new CultureInfo(defaultDateCulture);
+//ci.NumberFormat.NumberDecimalSeparator = ",";
+//ci.NumberFormat.CurrencyDecimalSeparator = ",";
+
+//// Configure the Localization middleware
+//app.UseRequestLocalization(new RequestLocalizationOptions
+//{
+//    DefaultRequestCulture = new RequestCulture(ci),
+//    SupportedCultures = new List<CultureInfo>
+//    {
+//        ci,
+//    },
+//    SupportedUICultures = new List<CultureInfo>
+//    {
+//        ci,
+//    }
+//});
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
