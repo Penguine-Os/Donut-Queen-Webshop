@@ -24,7 +24,11 @@ namespace DonutQueen_DAL.Repositories
 
 
         }
+        public void Save()
+        {
+             _db.SaveChanges();
+        }
 
-     
+
     }
 }

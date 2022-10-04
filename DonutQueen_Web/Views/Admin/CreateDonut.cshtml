@@ -1,56 +1,91 @@
-﻿@model DonutViewModel
+﻿@model Donut
 
-<form asp-for method="post" class="d-flex justify-content-center">
+<form  method="post" class="d-flex justify-content-center">
 
 
     <div class="row g-3 ">
 
-        <div class="form-group pt-5">
-            <span asp-validation-for="Donut.Naam" class="text-danger"></span>
-            <input asp-for="Donut.Naam"
-                   type="text" class="form-control mb-5" placeholder="Naam" aria-label="First name">
+        <div class="row">
+            <div class="mt-5 mb-2">
+                <span asp-validation-for="Naam" class="text-danger"></span>
+                <input asp-for="Naam"
+                       type="text" class="form-control" placeholder="Naam" aria-label="First name">
+            </div>
+            <div class="my-2">
 
-        
-            <textarea asp-for="Donut.Omschrijving"
-                      class="form-control " placeholder="Omschrijving" rows="3"></textarea>
-            
+                <textarea asp-for="Omschrijving"
+                          class="form-control " placeholder="Omschrijving" rows="3"></textarea>
+            </div>
         </div>
-        <div class="form-group col-6">
-            <span asp-validation-for="Donut.Afbeelding" class="text-danger"></span>
-            <input asp-for="Donut.Afbeelding"
-                   type="text" class="form-control mb-5" placeholder="Afbeelding" aria-label="First name">
+       
 
-            <span asp-validation-for="Donut.Glazuur" class="text-danger"></span>
-            <input asp-for="Donut.Glazuur"
-                   type="text" class="form-control mb-5" placeholder="Glazuur" aria-label="First name">
-            
-                   <span asp-validation-for="Donut.IsVegan" class="text-danger"></span>
-            <input asp-for="Donut.IsVegan"
-             type= "text" class="form-control mb-5" placeholder="Vegan" >
-            <button type="submit" class=" w-100 btn btn-outline-primary">Create</button>
+        <div class="row">
+          
+            <div class="col-md-6 my-2">
+                <span asp-validation-for="Afbeelding" class="text-danger my-2"></span>
 
+                <input asp-for="Afbeelding"
+                       type="text" class="form-control" placeholder="Afbeelding" aria-label="First name">
+            </div>
+            <div class="col-md-6 my-2">
+                <span asp-validation-for="Glazuur" class="text-danger my-2"></span>
+
+                <input asp-for="Glazuur"
+                       type="text" class="form-control" placeholder="Glazuur" aria-label="First name">
+            </div>
         </div>
 
+        <div class="row">
+           
+            <div class="col-md-6 my-2">
+               
+                <input asp-for="Prijs"
+                       class="form-control" placeholder="prijs">
 
-        <div class="col-6">
-            <span asp-validation-for="Donut.Topping" class="text-danger"></span>
-            <input asp-for="Donut.Topping"
-                   type="text" class="form-control mb-5" placeholder="Topping" aria-label="Last name">
+            </div>
+            <div class="col-md-6 my-2">
+                <span asp-validation-for="IsVegan" class="text-danger"></span>
 
-            <span asp-validation-for="Donut.Vulling" class="text-danger"></span>
-            <input asp-for="Donut.Vulling"
-                   type="text" class="form-control mb-5" placeholder="Vulling" aria-label="Last name">
-
-            <input asp-for="Donut.Prijs"
-                  class="form-control mb-5" placeholder="prijs">
-            <a asp-controller="Admin" asp-action="Donuts" class="w-100 btn btn-outline-success">Return</a>
-
+                <input asp-for="IsVegan"
+                       type="text" class="form-control" placeholder="Vegan">
+            </div>
         </div>
+
+   
+        <div class="row">
+           
+            <div class="col-md-6 my-2">
+                <span asp-validation-for="Topping" class="text-danger"></span>
+
+                     <input asp-for="Topping"
+                           type="text" class="form-control" placeholder="Topping" aria-label="Last name">
+                       </div>
+            <div class="col-md-6 my-2">
+                <span asp-validation-for="Vulling" class="text-danger"></span>
+
+
+                <input asp-for="Vulling"
+                       type="text" class="form-control" placeholder="Vulling" aria-label="Last name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 my-2">
+              
+                <button type="submit" class=" w-100 btn btn-outline-primary">Create</button>
+
+            </div>
+            <div class="col-md-6 my-2">
+                <a asp-controller="Admin" asp-action="Donuts" class="w-100 btn btn-outline-success">Return</a>
+            </div>
+        </div>
+
     </div>
 </form>
 
 @section Scripts
     {
-    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 
 }

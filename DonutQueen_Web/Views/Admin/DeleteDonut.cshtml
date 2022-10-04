@@ -1,0 +1,32 @@
+﻿@model Donut
+@{
+    var donut = Model;
+}
+
+<h1>@donut.Naam</h1>
+<table class="table table-striped ">
+    <tbody>
+        @foreach (var item in Model.GetType().GetProperties())
+        {   
+            <tr>
+                <td>
+                    @(item.Name == "IsVegan" ? "Vegan" : item.Name)
+                </td>
+                <td>
+                    @item.GetValue(Model)
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
+
+<form asp-action="DeleteDonut">
+    <input type="hidden" asp-for="Id"/>
+    <div class="col">
+        <a class="btn btn-outline-success"
+           href="@Url.Action("Donuts", "Admin")">Return</a>
+        <button type="submit" value="Delete" class=" btn btn-outline-danger">Delete</button>
+    </div>
+
+</form>

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DonutQueen_DAL.Repositories
 {
-    public class GenericRepo<T> : IGenericRepo<T> where T :  EntityId
+    public class GenericRepo<T> : IGenericRepo<T> where T : EntityId
     {
         private readonly ApplicationDbContext _db;
         internal DbSet<T> _dbSet;
@@ -21,16 +21,23 @@ namespace DonutQueen_DAL.Repositories
             _db = db;
         }
 
-        public int AddObjToDb(T obj)
+        public void AddObjToDb(T obj)
         {
-            using (_db)
-            {
-                _db.Set<T>().Add(obj);
-                _db.SaveChanges();
-                _db.Entry(obj).GetDatabaseValues();
 
-                return obj.Id;
-            }
+            _dbSet.Add(obj);  
+            
+        }
+        
+        public void UpdateObj(T obj)
+        {
+
+            _dbSet.Update(obj);  
+            
+        }
+        public void DeleteObj(T obj)
+        {
+
+            _dbSet.Remove(obj); 
             
         }
 

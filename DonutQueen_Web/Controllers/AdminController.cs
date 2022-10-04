@@ -35,66 +35,25 @@ namespace DonutQueen_Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateDonut(DonutViewModel donutViewModel)
+        public IActionResult CreateDonut(Donut donut)
         {
 
-            //var state = ModelState.IsValid;
-            decimal prijs;
-            if (!string.IsNullOrWhiteSpace(donutViewModel.Prijs))
-
-                if (decimal.TryParse(donutViewModel.Prijs, out prijs))
-
-                    donutViewModel.Donut.Prijs = prijs;
-
-
-
-            int id = _unitOfWork.DonutRepo.AddObjToDb(donutViewModel.Donut);
-
-
-
-            return RedirectToAction("Donut");
-        }
-
-        [HttpPost]
-        //public IActionResult CreateDonut(Donut donut)
-        //    {
-
-        //    var state = ModelState.IsValid;
-            
-
-
-
-        //    return RedirectToAction("Donuts");
-        //}
-        public IActionResult UpdateDonut(int id)
-        {
-            
-            if (id == 0)
+            if (!ModelState.IsValid)
                 return View();
 
+            _unitOfWork.DonutRepo.AddObjToDb(donut);
+            try
+            {
 
-            var donut = _unitOfWork.DonutRepo.GetById(id);
-            DonutViewModel Dvm = new DonutViewModel();
-            Dvm.Donut = donut;
-            Dvm.Prijs = donut.Prijs.ToString();
-            return View(Dvm);
-        }
+                _unitOfWork.Save();
+                return RedirectToAction("Donuts");
+            }
+            catch (Exception)
+            {
 
-        [HttpPost]
-        public IActionResult UpdateDonut(DonutViewModel donutViewModel)
-        {
+                return View();
+            }
 
-
-            decimal prijs;
-            if (!string.IsNullOrWhiteSpace(donutViewModel.Prijs))
-
-                if (decimal.TryParse(donutViewModel.Prijs, out prijs))
-
-                    donutViewModel.Donut.Prijs = prijs;
-
-
-
-            int id = _unitOfWork.DonutRepo.AddObjToDb(donutViewModel.Donut);
 
 
 
@@ -102,6 +61,63 @@ namespace DonutQueen_Web.Controllers
         }
 
 
+        public IActionResult UpdateDonut(int id)
+        {
+
+            if (id == 0)
+                return View();
+
+
+            var donut = _unitOfWork.DonutRepo.GetById(id);
+            if (donut is null)
+                return RedirectToAction("donuts");
+
+
+
+            return View(donut);
+        }
+
+        [HttpPost]
+        public IActionResult UpdateDonut(Donut donut)
+        {
+
+            if (!ModelState.IsValid)
+                return View();
+
+            _unitOfWork.DonutRepo.UpdateObj(donut);
+            _unitOfWork.Save();
+
+            return RedirectToAction("Donuts");
+        }
+
+        public IActionResult DeleteDonut(int id)
+        {
+
+            if (id == 0)
+                return View();
+
+
+            var donut = _unitOfWork.DonutRepo.GetById(id);
+            if (donut is null)
+                return RedirectToAction("donuts");
+
+
+
+            return View(donut);
+        }
+        [HttpPost, ActionName("DeleteDonut")]
+        public IActionResult DeleteDonut(Donut donut)
+        {
+
+            if (donut != null)
+            {
+                _unitOfWork.DonutRepo.DeleteObj(donut);
+                _unitOfWork.Save();
+                
+            }
+            return RedirectToAction("donuts");
+
+        }
 
 
 

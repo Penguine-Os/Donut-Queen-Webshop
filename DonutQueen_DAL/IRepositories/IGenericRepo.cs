@@ -13,8 +13,10 @@ namespace DonutQueen_DAL.IRepositories
         public IEnumerable<T> GetAll();
         public IEnumerable<T> GetBySearchQuery(Expression<Func<T, bool>> Filter);
         public T GetById(int id);
-        public int AddObjToDb(T obj);
-       
+        public void AddObjToDb(T obj);
+        void UpdateObj(T obj);
+        void DeleteObj(T obj);
+
 
         //public IEnumerable<T> GetAll();
         //public IEnumerable<T> GetAll();

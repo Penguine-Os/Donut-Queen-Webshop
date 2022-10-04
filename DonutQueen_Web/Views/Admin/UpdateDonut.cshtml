@@ -1,31 +1,30 @@
-﻿@model DonutQueen_Models.ViewModels.DonutViewModel
+﻿@model DonutQueen_Models.Donut
 
 <form asp-action="UpdateDonut" method="post" class="d-flex justify-content-center">
-
+    <input type="hidden" asp-for="Id" />
 
     <div class="row g-3 ">
-        <input type="hidden" asp-for="Donut.Id"/>
         <div class="form-group pt-5">
-            <span asp-validation-for="Donut.Naam" class="text-danger"></span>
-            <input asp-for="Donut.Naam"
+            <span asp-validation-for="Naam" class="text-danger"></span>
+            <input asp-for="Naam"
                    type="text" class="form-control mb-5" placeholder="Naam" aria-label="First name">
 
-            <span asp-validation-for="Donut.Omschrijving" class="text-danger"></span>
-            <textarea asp-for="Donut.Omschrijving"
+            <span asp-validation-for="Omschrijving" class="text-danger"></span>
+            <textarea asp-for="Omschrijving"
                       class="form-control " placeholder="Omschrijving" rows="3"></textarea>
 
         </div>
         <div class="col-6">
-            <span asp-validation-for="Donut.Afbeelding" class="text-danger"></span>
-            <input asp-for="Donut.Afbeelding"
+            <span asp-validation-for="Afbeelding" class="text-danger"></span>
+            <input asp-for="Afbeelding"
                    type="text" class="form-control mb-5" placeholder="Afbeelding" aria-label="First name">
 
-            <span asp-validation-for="Donut.Glazuur" class="text-danger"></span>
-            <input asp-for="Donut.Glazuur"
+            <span asp-validation-for="Glazuur" class="text-danger"></span>
+            <input asp-for="Glazuur"
                    type="text" class="form-control mb-5" placeholder="Glazuur" aria-label="First name">
 
 
-            <input asp-for="Donut.IsVegan"
+            <input asp-for="IsVegan"
                    type="text" class="form-control mb-5" placeholder="Vegan" aria-label="First name">
             <button type="submit" class=" w-100 btn btn-outline-warning">Update</button>
 
@@ -33,12 +32,12 @@
 
 
         <div class="col-6">
-            <span asp-validation-for="Donut.Topping" class="text-danger"></span>
-            <input asp-for="Donut.Topping"
+            <span asp-validation-for="Topping" class="text-danger"></span>
+            <input asp-for="Topping"
                    class="form-control mb-5" placeholder="Topping" aria-label="Last name">
 
-            <span asp-validation-for="Donut.Vulling" class="text-danger"></span>
-            <input asp-for="Donut.Vulling"
+            <span asp-validation-for="Vulling" class="text-danger"></span>
+            <input asp-for="Vulling"
                    class="form-control mb-5" placeholder="Vulling" aria-label="Last name">
 
             <input asp-for="Prijs"

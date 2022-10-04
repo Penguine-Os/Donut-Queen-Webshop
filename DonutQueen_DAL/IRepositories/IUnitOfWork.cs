@@ -11,6 +11,7 @@ namespace DonutQueen_DAL.IRepositories
     {
         public IDonutRepo DonutRepo { get; }
         public IWinkelRepo WinkelRepo { get; }
-        
+
+        void Save();
     }
 }

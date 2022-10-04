@@ -12,7 +12,7 @@ namespace DonutQueen_Models.ViewModels
     {
         public string SearchQuery { get; set; }
 
-        [Required]
+     
         public string Prijs { get; set; }
         public Decimal Prijs2{ get; set; }
         public IEnumerable<Donut> Donuts { get; set; }
