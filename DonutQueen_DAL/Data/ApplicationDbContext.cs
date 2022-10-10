@@ -16,7 +16,9 @@ namespace DonutQueen_DAL.Data
         }
 
         public DbSet<Winkel> Winkels{ get; set; }
-        public DbSet<Donut> Donuts{ get; set; }
+        public DbSet<Donut> Donuts{ get; set; } 
+        public DbSet<Leverancier> Leveranciers{ get; set; } 
+        public DbSet<LeverancierDonut> LeverancierDonut { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +27,17 @@ namespace DonutQueen_DAL.Data
                 .Property(p => p.Prijs).HasColumnType("decimal(18,2)");
             modelBuilder.Entity<Winkel>().ToTable("Winkels");
 
+            modelBuilder.Entity<LeverancierDonut>()
+                .HasOne(x => x.Leverancier)
+                .WithMany(y => y.LeverancierDonuts)
+                .HasForeignKey(z => z.LeverancierId)
+                .IsRequired();
+
+            modelBuilder.Entity<LeverancierDonut>()
+                .HasOne(x => x.Donut)
+                .WithMany(y => y.LeverancierDonuts)
+                .HasForeignKey(z => z.DonutId)
+                .IsRequired();
         }
 
      

@@ -13,6 +13,7 @@ namespace DonutQueen_DAL.Repositories
         public IDonutRepo DonutRepo { get; private set; }
 
         public IWinkelRepo WinkelRepo { get; private set; }
+        public ILeverancierRepo LeverancierRepo { get; private set; }
 
         private readonly ApplicationDbContext _db;
 
@@ -22,7 +23,7 @@ namespace DonutQueen_DAL.Repositories
             DonutRepo = new DonutRepo(db);
             WinkelRepo = new WinkelRepo(db);
 
-
+            LeverancierRepo = new LeverancierRepo(db);
         }
         public void Save()
         {

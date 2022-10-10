@@ -113,11 +113,25 @@ namespace DonutQueen_Web.Controllers
             {
                 _unitOfWork.DonutRepo.DeleteObj(donut);
                 _unitOfWork.Save();
-                
+
             }
             return RedirectToAction("donuts");
 
         }
+        public IActionResult Leveranciers()
+        {
+           var Leveranciers = _unitOfWork.LeverancierRepo.GetAll().ToList();
+            if (Leveranciers is null)
+                return View();
+
+            return View(Leveranciers);
+
+        }
+
+
+
+
+
 
 
 

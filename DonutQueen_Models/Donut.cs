@@ -35,6 +35,8 @@ namespace DonutQueen_Models
 
         public decimal? Prijs { get; set; }
 
+        public ICollection<LeverancierDonut> LeverancierDonuts { get; set; }
+
 
 
     }

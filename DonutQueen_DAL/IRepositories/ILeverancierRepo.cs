@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace DonutQueen_DAL.IRepositories
 {
-    public interface IUnitOfWork
+    public interface ILeverancierRepo : IGenericRepo<Leverancier>
     {
-        public IDonutRepo DonutRepo { get; }
-        public IWinkelRepo WinkelRepo { get; }
-        ILeverancierRepo LeverancierRepo { get; }
-
-        void Save();
     }
+    
 }
