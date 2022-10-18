@@ -5,8 +5,6 @@ VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DonutQueen_Web", "DonutQueen_Web\DonutQueen_Web.csproj", "{70144819-4424-47BA-9A63-55355B5DF738}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DonutQueen_DAL", "DonutQueen_DAL\DonutQueen_DAL.csproj", "{322E1F81-605F-4D1C-B238-4148D0B96594}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DonutQueen_Models", "DonutQueen_Models\DonutQueen_Models.csproj", "{4928B36B-5BE4-4076-9C42-A2AEC43C7EF6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F468C108-2BF6-4B58-9C49-19D45DCCBEB4}"
@@ -24,10 +22,6 @@ Global
 		{70144819-4424-47BA-9A63-55355B5DF738}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70144819-4424-47BA-9A63-55355B5DF738}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70144819-4424-47BA-9A63-55355B5DF738}.Release|Any CPU.Build.0 = Release|Any CPU
-		{322E1F81-605F-4D1C-B238-4148D0B96594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{322E1F81-605F-4D1C-B238-4148D0B96594}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{322E1F81-605F-4D1C-B238-4148D0B96594}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{322E1F81-605F-4D1C-B238-4148D0B96594}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4928B36B-5BE4-4076-9C42-A2AEC43C7EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4928B36B-5BE4-4076-9C42-A2AEC43C7EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4928B36B-5BE4-4076-9C42-A2AEC43C7EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU

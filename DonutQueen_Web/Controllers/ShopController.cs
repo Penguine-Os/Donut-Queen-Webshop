@@ -1,5 +1,6 @@
-﻿using DonutQueen_DAL.IRepositories;
-using DonutQueen_DAL.Repositories;
+﻿using DonutQueen_Web.Data.Repositories;
+using DonutQueen_Web.Data.IRepositories;
+using DonutQueen_Web.Data.Access;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DonutQueen_Web.Controllers

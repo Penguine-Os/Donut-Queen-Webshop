@@ -1,0 +1,100 @@
+﻿@model LeverancierViewModel
+
+@{
+    ViewData["Title"] = "Leveranciers";
+}
+
+<h1>Leveranciers</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.NaamContactpersoon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.VoornaamContactpersoon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.Emailadres)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.Straat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.Huisnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.PostCode)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Leveranciers) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NaamContactpersoon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoornaamContactpersoon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Emailadres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Straat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Huisnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PostCode)
+            </td>
+          
+        </tr>
+}
+    </tbody>
+</table>
+
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.Naam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Leverancier.NaamContactpersoon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donut.Naam)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LeverancierDonut)
+        {
+            <tr>
+               <td>
+                    @Html.DisplayFor(modelItem => item.Leverancier.Naam)
+               </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Leverancier.NaamContactpersoon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Donut.Naam)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

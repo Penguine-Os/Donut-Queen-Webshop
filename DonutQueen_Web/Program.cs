@@ -1,6 +1,6 @@
-using DonutQueen_DAL.Data;
-using DonutQueen_DAL.IRepositories;
-using DonutQueen_DAL.Repositories;
+using DonutQueen_Web.Data.Repositories;
+using DonutQueen_Web.Data.IRepositories;
+using DonutQueen_Web.Data.Access;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -11,11 +11,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc().AddRazorRuntimeCompilation();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-
 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
+builder.Services.AddScoped<IDbInitializer,DbInitializer>();   
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +27,7 @@ if (!app.Environment.IsDevelopment())
 
 
 app.UseHttpsRedirection();
+SeedDatabase();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -39,3 +39,12 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
+void SeedDatabase() //can be placed at the very bottom under app.Run()
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbInitializer = scope.ServiceProvider.GetRequiredService<IDbInitializer>();
+        dbInitializer.MaakLeverancierTabel(scope.ServiceProvider.GetRequiredService<ApplicationDbContext>());
+    }
+}

@@ -1,5 +1,6 @@
-﻿using DonutQueen_DAL.IRepositories;
-using DonutQueen_DAL.Repositories;
+﻿using DonutQueen_Web.Data.Repositories;
+using DonutQueen_Web.Data.IRepositories;
+using DonutQueen_Web.Data.Access;
 using DonutQueen_Models;
 using DonutQueen_Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -120,11 +121,18 @@ namespace DonutQueen_Web.Controllers
         }
         public IActionResult Leveranciers()
         {
+            LeverancierViewModel leverancierViewModel = new();
+
            var Leveranciers = _unitOfWork.LeverancierRepo.GetAll().ToList();
+            var DonutPerLeverancier = _unitOfWork.LeverancierDonutRepo.GetDonutPerLeverancier();
+            
+            leverancierViewModel.Leveranciers = Leveranciers;
+            leverancierViewModel.LeverancierDonut = DonutPerLeverancier;
+
             if (Leveranciers is null)
                 return View();
 
-            return View(Leveranciers);
+            return View(leverancierViewModel);
 
         }
 
